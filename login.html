@@ -7,13 +7,23 @@
 </head>
 <body>
     <form action="index.html">
-        <input type="text" placeholder="Nom">
-        <input type="password" placeholder="mdp">
+        <label for="nom">Nom</label>
+        <input type="text" name="nom" id="nom" placeholder="Nom">
+
+        <label for="mdp">Mot de passe</label>
+        <input type="password" name="mdp" id="mdp" placeholder="mdp">
+
         <button id="btn">Se connecter</button>
     </form>
     
 </body>
 
-
+<script>
+    let btn = document.getElementById("btn");
+    btn.addEventListener("click", function(){
+        console.log("test"); 
+        // Test pour vérifier le JS
+    })
+</script>
 
 </html>
