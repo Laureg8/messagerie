@@ -1,0 +1,55 @@
+/*style de la page d'inscription*/
+
+
+/*disposition des divs inscription-img et inscription*/
+.form{
+    display:flex;
+}
+
+/*formulaire */
+
+input[type=text], input[type=password], input[type=email]{
+    border :solid 1px black;
+    margin-top : 44px;
+    height : 60px;
+    width : 200px;
+    border-radius : 16px;
+}
+
+/*style du bouton*/
+#btn{
+    text-decoration : none;
+    border : solid 1px black;
+    margin-top : 44px;
+    border-radius : 16px;
+    background-color : white;
+    height : 60px;
+    width :180px;
+    box-shadow: 0px 10px 0px 1px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 10px 0px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 10px 0px 1px rgba(0,0,0,1);
+}
+
+/*div image*/
+#inscription-img{
+    display: flex;
+    width: 40%;
+    height: 100%;
+    color: #aaaaaa;
+}
+
+/*div inscription*/
+#inscription{
+    display: flex;
+    width :60%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#inscription form{
+    display: flex;
+    flex-direction: column;
+
+}
+
