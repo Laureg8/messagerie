@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/inscription.css"  >
     <title>connexion</title>
 </head>
 <body>
-    <form action="index.html">
-        <label for="nom">Nom</label>
-        <input type="text" name="nom" id="nom" placeholder="Nom">
+    <div class="form">
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="name" placeholder="email">
+        <div id="inscription-img" > </div>
 
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" placeholder="mdp">
+        <div id="inscription">
+            <form action="index.html">
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" id="nom" placeholder="Nom">
 
-        <label for="cpswd">Confirmation de mot de passe</label>
-        <input type="password" name="cpswd" id="cpswd" placeholder="confirm mdp">
-        
-        <button id="btn">Se connecter</button>
-    </form>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="name" placeholder="email">
+
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" placeholder="mdp">
+
+                <label for="cpswd">Confirmation de mot de passe</label>
+                <input type="password" name="cpswd" id="cpswd" placeholder="confirm mdp">
+                
+                <button id="btn">Se connecter</button>
+            </form>
+        </div>
+    </div>
     
 </body>
 
