@@ -1,26 +1,43 @@
 /*style de la page d'inscription*/
+body {
+    margin: 0;
+    min-height: 100vh;
+}
 
-
-/*disposition des divs inscription-img et inscription*/
+/*div englobante */
 .form{
     display:flex;
+    min-height: 100vh;
 }
 
 /*formulaire */
 
-input[type=text], input[type=password], input[type=email]{
+
+input{
     border :solid 1px black;
-    margin-top : 44px;
     height : 60px;
     width : 200px;
     border-radius : 16px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+}
+
+.element {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 /*style du bouton*/
 #btn{
     text-decoration : none;
     border : solid 1px black;
-    margin-top : 44px;
     border-radius : 16px;
     background-color : white;
     height : 60px;
@@ -34,7 +51,6 @@ input[type=text], input[type=password], input[type=email]{
 #inscription-img{
     display: flex;
     width: 40%;
-    height: 100%;
     color: #aaaaaa;
 }
 
@@ -42,14 +58,9 @@ input[type=text], input[type=password], input[type=email]{
 #inscription{
     display: flex;
     width :60%;
-    height: 100%;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-#inscription form{
-    display: flex;
-    flex-direction: column;
 
-}
 
