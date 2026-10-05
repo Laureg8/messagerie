@@ -8,7 +8,7 @@ const getWeather = (temp_code) => {
   if (temp_code >= 71 && temp_code <= 75) return 'neige'
   if (temp_code >= 61 && temp_code <= 67) return 'pluie'
     
-    return 'nuageux' 
+    return 'soleil' 
 }
 
 

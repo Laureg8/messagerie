@@ -1,0 +1,28 @@
+/* Thèmes pour la méssagerie */
+
+/*Beaux temps*/
+.messagerie.soleil{
+    background-color: #C1E9F8 ;
+}
+
+.messagerie.soleil #btn{
+    color: #FFCC00 ;
+}
+
+/*Pluie*/
+.messagerie.pluie{
+    background-color: #94ADC5 ;
+}
+
+.messagerie.pluie #btn{
+    color: #94ADC5 ;
+}
+
+/*Neiges*/
+.messagerie.neige{
+    background-color: #DDEDF2 ;
+}
+
+.messagerie.neige #btn{
+    color: #94ADC5 ;
+}
