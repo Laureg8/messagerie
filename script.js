@@ -40,26 +40,16 @@ function logKey(e) {
 const ul = document.getElementById("messages");
 const btnEnvoie = document.getElementById("envoie");
 
-input.addEventListener('input', function(){
-    const valeur = input.value
-
-    console.log(valeur);
-
-    const li = document.createElement("li");
-    
-    li.textContent = valeur;
-    
-    ul.appendChild(li);
-}); 
 
 
-/* btnEnvoie.addEventListener('click', function(){
+
+btnEnvoie.addEventListener('click', function(){
     const valeur = input.value
     const li = document.createElement("li");
     
     li.textContent = valeur;
     
     ul.appendChild(li);
-}) */
+}) 
 
 
