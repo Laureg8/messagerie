@@ -39,6 +39,7 @@ function logKey(e) {
 
 const ul = document.getElementById("messages");
 const btnEnvoie = document.getElementById("envoie");
+const champSaisie = document.getElementById("saisie");
 
 
 
@@ -49,7 +50,12 @@ btnEnvoie.addEventListener('click', function(){
     
     li.textContent = valeur;
     
+    li.classList.add("message", "envoye");
     ul.appendChild(li);
+
+    /*pour supprimer ce qui se trouve dans l'input après chaque envois de message*/
+    champSaisie.value ='';
+
 }) 
 
 
