@@ -11,6 +11,10 @@ const getWeather = (temp_code) => {
     return 'soleil' 
 }
 
+function appliquerTheme(theme){
+  const body = document.body;
+  body.classList.add(theme);
+}
 
 async function getData() {
   try {
@@ -25,6 +29,8 @@ async function getData() {
 
     console.log("Code météo :", codeMeteo);
     console.log("Temps actuel :", temps);
+
+    appliquerTheme(temps);
   } catch (erreur) {
     console.error(erreur.message);
   }

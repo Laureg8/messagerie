@@ -3,6 +3,10 @@ a {
     color: black;
 }
 
+body{
+  margin: 0;
+}
+
 /*style de la partie messagerie
 
 /* Conteneur de la liste de message*/

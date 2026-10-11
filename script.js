@@ -1,28 +1,13 @@
-/* const email = document.querySelector('#email'); 
+//Connexion supabase
 
-const emailMessage = document.querySelector('#email-message');
+/* const SUPABASE_URL = "https://qgtpterfnrltrmsygbrh.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_X8CN-z4V1TrT3eNmq_GrmQ_nNfDNrRU";
 
-email.addEventListener('input', function(event){
-    const valeur = email.value
-
-    const arobase = valeur.includes('@');
-
-    console.log(valeur);
-
-
-    emailMessage.textContent = valeur;
-
-    if (valeur === ""){
-        emailMessage.textContent = "le couriel est obligatoire";
-    }else if (!arobase){
-        emailMessage.textContent = "le couriel est invalide";
-
-    }else{
-        emailMessage.textContent = "youhou";
-    }
-}); */
-
-
+const supabaseClient = supabase.creatClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+ */
 /*fonction pour vérifier si on est entrain d'écrire*/
 
 /*récupération du champs de saisie */

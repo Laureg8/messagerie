@@ -1,28 +1,30 @@
-/* Thèmes pour la méssagerie */
 
-/*Beaux temps*/
-.messagerie.soleil{
-    background-color: #C1E9F8 ;
+:root {
+  --bg-messagerie: #C1E9F8;
+  --btn-color: #FFCC00;
+  --text-color: #333333;
+  --font-family: Arial, sans-serif; 
 }
 
-.messagerie.soleil #btn{
-    color: #FFCC00 ;
+body.pluie {
+  --bg-messagerie: #94ADC5;
+  --btn-color: #94ADC5;
+  --text-color: #ffffff;
 }
 
-/*Pluie*/
-.messagerie.pluie{
-    background-color: #94ADC5 ;
+body.neige {
+  --bg-messagerie: #DDEDF2;
+  --btn-color: #94ADC5;
+  --text-color: #333333;
 }
 
-.messagerie.pluie #btn{
-    color: #94ADC5 ;
+
+#messagerie {
+  background-color: var(--bg-messagerie);
+  color: var(--text-color);
+  font-family: var(--font-family);
 }
 
-/*Neiges*/
-.messagerie.neige{
-    background-color: #DDEDF2 ;
-}
-
-.messagerie.neige #btn{
-    color: #94ADC5 ;
+#envoie {
+  background-color: var(--btn-color);
 }
