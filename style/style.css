@@ -3,3 +3,101 @@ a {
     color: black;
 }
 
+body{
+  margin: 0;
+}
+
+/*style de la partie messagerie
+
+/* Conteneur de la liste de message*/
+#messages {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+  max-width: 400px;
+}
+
+
+.message {
+  padding: 10px 14px;
+  border-radius: 18px;
+  word-wrap: break-word;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+/*messages que l'on envoit*/
+.message.envoye {
+  align-self: flex-end; 
+  background-color: #ffff;
+  border: 4px solid #0B4F91;
+  border-bottom-right-radius: 4px;
+}
+
+.message.recu {
+  align-self: flex-start; 
+  background-color: #ffff;
+  border: 4px solid #FFCC00;
+  border-bottom-left-radius: 4px;
+}
+
+/*div englobante */
+.form{
+    display:flex;
+    min-height: 100vh;
+}
+
+/*là ou son afficher les canaux*/
+#contacts{
+    display: flex;
+    width: 30%;
+}
+
+/*là ou est afficher la discution*/
+#messagerie{
+    display: flex;
+    flex-direction: column;
+    width :70%;
+}
+
+/*le champs de saisie du message et son bouton*/
+#envoie{
+  display: flex;
+}
+
+#envoie input[type=text]{
+  border-radius: 10px;
+  border : 4px solid #0B4F91;
+  padding : 10px;
+  width: 50%;
+  height: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 8%;
+}
+
+#envoie input[type=submit]{
+position: absolute;
+    right: 9%;
+    top: 92%;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+    background-image: url('../src/arrow.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  
+}
+
+
+
+
+
+
+/*Style de la partie contact*/

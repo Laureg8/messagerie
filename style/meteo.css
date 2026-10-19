@@ -1,0 +1,27 @@
+
+:root {
+  --bg-messagerie: #C1E9F8;
+  --btn-color: #FFCC00;
+  --text-color: #333333;
+  --font-family: Arial, sans-serif; 
+}
+
+body.pluie {
+  --bg-messagerie: #94ADC5;
+  --btn-color: #94ADC5;
+  --text-color: #ffffff;
+}
+
+body.neige {
+  --bg-messagerie: #DDEDF2;
+  --btn-color: #94ADC5;
+  --text-color: #333333;
+}
+
+
+#messagerie {
+  background-color: var(--bg-messagerie);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
