@@ -52,25 +52,43 @@ body{
     min-height: 100vh;
 }
 
+/*là ou son afficher les canaux*/
 #contacts{
     display: flex;
     width: 30%;
-    color: #aaaaaa;
-    background-repeat: no-repeat;
 }
 
-
+/*là ou est afficher la discution*/
 #messagerie{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width :70%;
-    justify-content: center;
-    align-items: center;
 }
 
+/*le champs de saisie du message et son bouton*/
+#envoie{
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+}
 
+#envoie input[type=text]{
+  border-radius: 10px;
+  border : 4px solid #0B4F91;
+  padding : 10px;
+  width: 80%;
+  height: 10px;
+}
 
-
+/*div pour styliser la section d'envoi de message*/
+#bg-messages{
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  position: relative;
+  width: 100%;
+  height: 80%;
+}
 
 
 
