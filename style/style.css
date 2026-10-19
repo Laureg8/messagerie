@@ -61,34 +61,39 @@ body{
 /*là ou est afficher la discution*/
 #messagerie{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     width :70%;
 }
 
 /*le champs de saisie du message et son bouton*/
 #envoie{
   display: flex;
-  position: absolute;
-  bottom: 20px;
 }
 
 #envoie input[type=text]{
   border-radius: 10px;
   border : 4px solid #0B4F91;
   padding : 10px;
-  width: 80%;
-  height: 10px;
+  width: 50%;
+  height: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 8%;
 }
 
-/*div pour styliser la section d'envoi de message*/
-#bg-messages{
-  background-color: white;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  position: relative;
-  width: 100%;
-  height: 80%;
+#envoie input[type=submit]{
+  background:url(../src/arrow.svg);
+  background-repeat: no-repeat;
+  height: 29px;
+  width: 46px;
+  border:0;
+  display:block;
+  position: absolute;
+  bottom: 40px;
+  right: 8%;
+  
 }
+
 
 
 
