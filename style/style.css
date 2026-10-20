@@ -82,16 +82,16 @@ body{
 }
 
 #envoie input[type=submit]{
-position: absolute;
-    right: 9%;
-    top: 92%;
-    width: 24px;
-    height: 24px;
-    border: none;
-    background-color: transparent;
-    background-image: url('../src/arrow.svg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+  position: absolute;
+  right: 9%;
+  top: 92%;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  background-image: url('../src/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   
 }
 
