@@ -75,7 +75,7 @@ form{
     display: flex;
     width: 40%;
     color: #aaaaaa;
-    background-image: url("/src/connect_img.png");
+    background-image: url("../src/connect_img.png"); 
     background-repeat: no-repeat;
 }
 
