@@ -74,19 +74,19 @@
         const { data, error } = await supabaseClient.auth.signUp({ email, password });
 
 
-            const { error: profileError } = await supabaseClient
-                .from("profiles")
-                .insert([{ 
-                    id : data.user.id,
-                    username: name        
-                }]);
+        const { error: profileError } = await supabaseClient
+            .from("profiles")
+            .insert([{ 
+                id : data.user.id,
+                username: name        
+            }]);
 
 
         if (error) {
             console.error("Erreur Supabase :", error.message);
             alert("Erreur de connexion : " + error.message);
         } else {
-            window.location.href = "discution.html";
+            window.location.href = "discussion.html";
         }
         });
 
