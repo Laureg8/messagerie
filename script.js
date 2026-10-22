@@ -142,8 +142,12 @@ btnEnvoie.addEventListener('click', async () => {
 
     input.value = '';
 
-    const { data, error } = await window.supabase.from('messages').insert([
-        { message_content: valeur }
+    const { data, error } = await supabaseClient.from('messages').insert([
+        { 
+            message_content: valeur,
+            channel_id : currentChannelId,
+            profile_id : currentProfileId
+         }
     ]);
 
 
