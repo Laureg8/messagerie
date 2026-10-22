@@ -1,10 +1,11 @@
 //Connexion supabase
+import { supabaseClient } from "./supabase-client.js";
 
-    const SUPABASE_URL = "https://tzugubrpoizirgufhozn.supabase.co"; 
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6dWd1YnJwb2l6aXJndWZob3puIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0OTY1ODEsImV4cCI6MjEwNzA3MjU4MX0.q8GrSI-3MpTeKgHSHwp8q4QcU7uA_SeYavW4uwHFJj0"; 
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+
+// Création du channel ID, ici il est null
 let currentChannelId = null;
+
 //Vérifier qu'un utilisateur est connecté 
 const IsConnected = async () => {
   const { data: { user } } = await supabaseClient.auth.getUser();
@@ -27,17 +28,13 @@ const IsConnected = async () => {
 };
 
 
-
 /*fonction pour vérifier si on est entrain d'écrire*/
 
 /*récupération du champs de saisie */
-const input = document.querySelector("input");
+const input = document.getElementById("saisie");
 
-input.addEventListener("keydown", logKey);
 
-function logKey(e) {
-  console.log('entrain d écrire...')
-};
+const currentProfileId = await IsConnected();
 
 
 const btnCreerCanal = document.getElementById("btn-creer-canal");
@@ -47,7 +44,6 @@ btnCreerCanal.addEventListener('click', async () => {
     const nomCanal = champNomCanal.value.trim();
     if (!nomCanal) return;
 
-    const currentProfileId = await IsConnected();
     if (!currentProfileId) {
         alert("Vous devez être connecté pour créer un canal !");
         return;
@@ -83,39 +79,82 @@ btnCreerCanal.addEventListener('click', async () => {
     champNomCanal.value = '';
 });
 
-const ul = document.getElementById("messages");
+
+
+const { data, error } = await supabaseClient.from('channel').select('*');
+const listeChannels = document.getElementById('liste-channels');
+let ul = document.getElementById("messages");
+
+data.forEach(channel => {
+    const div = document.createElement("div");  
+    div.classList.add("channel");
+
+    const li = document.createElement("li");
+    li.classList.add("channel-name");
+    li.textContent = channel?.name;
+    
+    const button = document.createElement("button");
+    button.classList.add("channel-button");
+    button.textContent = "cc";
+
+    div.appendChild(li);
+    div.appendChild(button);
+
+    div.addEventListener("click", async () => {
+        ul.innerHTML = '';
+        currentChannelId = channel?.id; //on donne le channel cliqué comme channel actuel
+
+        if(!currentChannelId) return;
+        // récupérer tous les messages du channel choisi
+        const {data: messages, error: errorMessages} = await supabaseClient.from("messages").select("*").eq("channel_id", currentChannelId); //ajouter limite de messages récupérés
+        messages.forEach(message => {
+            const li = document.createElement("li");
+            li.textContent = message?.message_content;
+            
+            if(message?.profile_id == currentProfileId) {
+                li.classList.add("message", "envoye");
+            }else {
+                li.classList.add("message", "recu");
+            }
+            ul.appendChild(li);
+        });
+
+    });
+
+    listeChannels.append(div);
+});
+
+
 const btnEnvoie = document.getElementById("envoie");
+const champSaisie = document.getElementById("saisie");
+
+
 
 btnEnvoie.addEventListener('click', async () => {
     const valeur = input.value.trim();
+
     if (!valeur) return;
-
-
-    const currentProfileId = await IsConnected();
-    if (!currentProfileId) {
-        alert("Vous devez être connecté pour envoyer un message !");
-        return;
-    }
-
-    const { data, error } = await supabaseClient
-        .from('messages')
-        .insert([{ 
-            message_content: valeur,
-            channel_id: currentChannelId,
-            profile_id: currentProfileId    
-        }]);
-
-    if (error) {
-        console.error("Erreur lors de l'envoi du message :", error.message);
-        return;
-    }
 
     const li = document.createElement("li");
     li.textContent = valeur;
     li.classList.add("message", "envoye");
     ul.appendChild(li);
 
-    // Vider le champ de saisie
     input.value = '';
-});
 
+    const { data, error } = await window.supabase.from('messages').insert([
+        { message_content: valeur }
+    ]);
+
+
+    if (error) {
+        console.error("Erreur lors de l'envoi :", error);
+        // Optionnel : alerter l'utilisateur ou retirer le 'li' si l'envoi a échoué
+    } else {
+        console.log("Message stocké avec succès !", data);
+    }
+
+    /*pour supprimer ce qui se trouve dans l'input après chaque envoie de message*/
+    champSaisie.value ='';
+
+}) 
