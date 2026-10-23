@@ -5,34 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>connexion</title>
     <link rel="stylesheet" href="style/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Borel&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Borel&family=Cause:wght@100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <main>
         
         <div class="left">
-            <img src="" alt="">
+            <img src="image/image-app.png" alt="image app">
         </div>
 
         <div class="right">
             <form action="index.html">
 
-                <div class="element">
-                    <label for="nom">Nom</label>
-                    <input type="text" name="nom" id="nom" placeholder="Nom">
+                <h1>Connectez-vous</h1>
+                <img src="image/star.png" alt="Etoile d'illustration">
+
+                <p id="courriel-message"></p>
+
+                <div>
+                    <label for="courriel">Identifiant</label>
+                    <input type="email" name="courriel" id="courriel">
                 </div>
 
-                <div class="element">
+                <div>
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" name="mdp" id="mdp" placeholder="mdp">
+                    <input type="password" name="mdp" id="mdp">
                 </div>
 
                 <button id="btn">Connexion</button>
+
+                <div class="inscription">
+                    <p>Pas encore de compte ?</p>
+                    <a href="signin.html">Inscrivez-vous</a>
+                </div>
 
             </form>
         </div>
 
     </main>
+
+    <footer>
+        <img src="image/footer.png" alt="Illustration de bas de page">
+    </footer>
     
 </body>
 
@@ -41,7 +61,29 @@
     btn.addEventListener("click", function(){
         console.log("test"); 
         // Test pour vérifier le JS
-    })
+    });
+
+    console.log("Bonjour");
+    
+    const courriel = document.querySelector("#courriel");
+    const courrielMessage = document.querySelector("#courriel-message");
+
+    console.log(courriel.value);
+
+    courriel.addEventListener("input", function(event){
+        const valeur = courriel.value;
+        const aUnArobase = valeur.includes("@");
+        const estVide = valeur === "";
+
+        if (estVide) {
+            courrielMessage.textContent = "Le courriel est obligatoire";
+        } else if (!aUnArobase) {
+            courrielMessage.textContent = "Le courriel n'est pas valide";
+        } else {
+            courrielMessage.textContent = "Tout semble valide";
+        }
+    });
+    
 </script>
 
 </html>
