@@ -1,0 +1,132 @@
+body{
+    background-image: url("../src/img_index.png");
+    background-repeat: no-repeat;
+}
+
+/*Placement des étoiles*/
+.stars{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.stars #star1{
+    position: absolute;
+    right: 15%;
+    top: 20em;
+    animation: rotate 4s 3s infinite linear;
+
+}
+
+.stars #star2{
+    position: absolute;
+    right: 19%;
+    top: 6em;
+    animation: rotate 5s 3s infinite linear;
+    
+}
+
+.stars #star3{
+    position: absolute;
+    right: 15%;
+    top: 2em;
+    animation: rotate 6s 3s infinite linear;
+}
+
+.stars #star4{
+    position: absolute;
+    left: 12%;
+    top: 15em;
+    animation: rotate 7s 3s infinite linear;
+}
+
+.stars #star5{
+    position: absolute;
+    left: 30%;
+    top: 8em;
+    animation: rotate 8s 3s infinite linear;
+}
+
+.stars #star6{
+    position: absolute;
+    right: 40%;
+    top: 5em;
+    animation: rotate 9s 3s infinite linear;
+}
+
+.stars #star7{
+    position: absolute;
+    right: 30%;
+    top: 3em;
+    animation: rotate 10s 3s infinite linear;
+}
+
+.stars #star8{
+    position: absolute;
+    left: 24%;
+    top: 15em;
+    animation: rotate 11s 3s infinite linear;
+}
+
+.stars #star9{
+    position: absolute;
+    left: 44%;
+    top: 2em;
+    animation: rotate 12s 3s infinite linear;
+}
+
+.stars #star10{
+    position: absolute;
+    left: 20%;
+    top: 5em;
+    animation: rotate 13s 3s infinite linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*Le nom du site et les boutons de connexion et d'inscription*/
+
+#pres-section{
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#pres-section h1{
+    font-family: "Borel", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3em;
+}
+
+#pres-section a {
+    font-family: cause;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    border : solid 1px #FFDF9A;
+    border-radius : 16px;
+    background-color : white;
+    padding: 1em 0em;
+    width :130px;
+    box-shadow: 0 3px #FFDF9A;
+    text-align: center;
+
+}
+
+#btn{
+    display: flex;
+    gap:1em;
+    align-items: center;
+    justify-content: center;
+}
