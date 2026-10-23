@@ -1,0 +1,100 @@
+/*style de la page d'inscription*/
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+/*div englobante */
+.form{
+    display:flex;
+    min-height: 100vh;
+}
+
+/*Le titre*/
+.titre{
+    position: relative;
+}
+
+.titre img{
+    position : absolute;
+    left: 220px;
+    top : -20px;
+    z-index : -999;
+}
+
+/*formulaire */
+h1{
+    font-family: "Borel", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+input{
+    height : 40px;
+    width : 200px;
+    border-radius : 16px;
+    border: solid 2px transparent;
+    background-image: linear-gradient(white, white), linear-gradient(153deg, rgba(255, 223, 154, 1) 0%, rgba(163, 226, 236, 1) 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+label{
+    font-family: "Cause", cursive;
+    font-optical-sizing: auto;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+}
+
+.element {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/*style du bouton*/
+#btn{
+    text-decoration : none;
+    border : solid 1px #FFDF9A;
+    border-radius : 16px;
+    background-color : white;
+    height : 70px;
+    width :180px;
+    box-shadow: 0 3px #FFDF9A;
+}
+
+/*div image*/
+#inscription-img{
+    display: flex;
+    width: 40%;
+    color: #aaaaaa;
+    background-image: url("../src/connect_img.png"); 
+    background-repeat: no-repeat;
+}
+
+/*div inscription*/
+#inscription{
+    display: flex;
+    flex-direction: column;
+    width :60%;
+    justify-content: center;
+    align-items: center;
+    position : relative;
+}
+
+.footer{
+    position : absolute; 
+    bottom : 0;
+    right : 0;
+    width: 8em;
+}
+
+
+

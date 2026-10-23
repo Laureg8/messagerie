@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>connexion</title>
     <link rel="stylesheet" href="style/login.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alata&family=Borel&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alata&family=Borel&family=Cause:wght@100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -21,16 +24,16 @@
         </div>
 
         <div class="right">
-            <form action="index.html">
+            <form id="form-login" method="POST">
 
                 <h1>Connectez-vous</h1>
                 <img src="image/star.png" alt="Etoile d'illustration">
 
                 <p id="courriel-message"></p>
 
-                <div>
-                    <label for="courriel">Identifiant</label>
-                    <input type="email" name="courriel" id="courriel">
+                <div class="element">
+                    <label for="nom">Email</label>
+                    <input type="email" name="nom" id="email" placeholder="Nom">
                 </div>
 
                 <div>
@@ -56,34 +59,35 @@
     
 </body>
 
+
 <script>
-    let btn = document.getElementById("btn");
-    btn.addEventListener("click", function(){
-        console.log("test"); 
-        // Test pour vérifier le JS
+
+    const SUPABASE_URL = "https://tzugubrpoizirgufhozn.supabase.co"; 
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6dWd1YnJwb2l6aXJndWZob3puIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0OTY1ODEsImV4cCI6MjEwNzA3MjU4MX0.q8GrSI-3MpTeKgHSHwp8q4QcU7uA_SeYavW4uwHFJj0"; 
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("mdp");
+
+    document.getElementById("form-login").addEventListener("submit", async (e) => { 
+    e.preventDefault(); 
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password,
     });
 
-    console.log("Bonjour");
-    
-    const courriel = document.querySelector("#courriel");
-    const courrielMessage = document.querySelector("#courriel-message");
+    if (error) {
+        console.error("Erreur Supabase :", error.message);
+        alert("Erreur de connexion : " + error.message);
+    } else {
+        window.location.href = "discussion.html";
 
-    console.log(courriel.value);
-
-    courriel.addEventListener("input", function(event){
-        const valeur = courriel.value;
-        const aUnArobase = valeur.includes("@");
-        const estVide = valeur === "";
-
-        if (estVide) {
-            courrielMessage.textContent = "Le courriel est obligatoire";
-        } else if (!aUnArobase) {
-            courrielMessage.textContent = "Le courriel n'est pas valide";
-        } else {
-            courrielMessage.textContent = "Tout semble valide";
-        }
-    });
-    
-</script>
+    }
+});
+    </script>
 
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css"  >
+    <link rel="stylesheet" href="style/meteo.css"  >
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>Discussion</title>
+</head>
+<body>
+
+    <div class="form">
+
+        <section id="contacts">
+            <div id="creation-canal">
+                <input type="text" id="nom-canal" placeholder="Nom du nouveau salon...">
+                <button id="btn-creer-canal">+</button> <!-- ligne test pour la fonction de création de canal -->
+            </div>
+
+            <ul id="liste-channels"></ul>
+        
+        </section>
+
+        <section id="messagerie"> 
+            <div id="bg-messages">
+
+                <ul id="messages">
+                    <li class="message recu">Choissisez un canal de discution !</li>
+                </ul>
+
+                <div id="envoie">
+                    <input type="text" name="saisie" id="saisie" >
+                    <input type="submit" id="envoie" value=""  >
+                </div>
+
+            </div>
+        </section>
+    
+    </div>
+
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="meteo.js"></script>
+</body>
+</html>
