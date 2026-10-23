@@ -1,7 +1,3 @@
-a {
-    text-decoration: none;
-    color: black;
-}
 
 body{
   margin: 0;
@@ -31,6 +27,17 @@ body{
   border-top-right-radius: 10%;
   margin-top: 8%;
   overflow-y: auto;
+}
+
+/* Cache la scrollbar pour Chrome, Safari et Opera */
+#bg-messages::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cache la scrollbar pour IE, Edge et Firefox */
+#bg-messages {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .message {
