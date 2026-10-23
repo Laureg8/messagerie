@@ -33,6 +33,17 @@ body{
   overflow-y: auto;
 }
 
+/* Cache la scrollbar pour Chrome, Safari et Opera */
+#bg-messages::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cache la scrollbar pour IE, Edge et Firefox */
+#bg-messages {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .message {
   padding: 10px 14px;
   border-radius: 18px;
