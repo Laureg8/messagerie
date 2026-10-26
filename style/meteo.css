@@ -23,5 +23,46 @@ body.neige {
   background-color: var(--bg-messagerie);
   color: var(--text-color);
   font-family: var(--font-family);
+  position: relative;
 }
 
+#meteo-soleil,
+#meteo-pluie,
+#meteo-neige{
+  display: none;
+  position: absolute;
+  top: 1%;
+  right: 0%;
+  width: 15%;
+  height: 15%;
+}
+
+body.soleil #meteo-soleil {
+  display: block;
+}
+
+body.pluie #meteo-pluie {
+  display: block;
+}
+
+body.neige #meteo-neige {
+  display: block;
+}
+
+#meteo-bonhomme-neige {
+  left: 15px;
+  right: auto;
+}
+
+body.neige #meteo-bonhomme-neige {
+  display: block;
+}
+
+#meteo-bonhomme-neige {
+  display: none;
+  position: absolute;
+  top: 4%;
+  left: 38%;
+  width: 8%;
+  height: 8%;
+}

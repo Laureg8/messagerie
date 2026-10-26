@@ -27,6 +27,7 @@ body{
   border-top-right-radius: 10%;
   margin-top: 8%;
   overflow-y: auto;
+  z-index: 1;
 }
 
 /* Cache la scrollbar pour Chrome, Safari et Opera */
