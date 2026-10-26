@@ -41,6 +41,29 @@ body.soleil #meteo-soleil {
   display: block;
 }
 
+body.soleil #meteo-nuage-soleil2,
+body.soleil #meteo-nuage-soleil{
+  display: block;
+}
+
+#meteo-nuage-soleil2{
+  display: none;
+  position: absolute;
+  top: 6%;
+  right: 0%;
+  width: 8%;
+  height: 8%;
+}
+
+#meteo-nuage-soleil{
+  display: none;
+  position: absolute;
+  top: 3%;
+  right: 7%;
+  width: 8%;
+  height: 8%;
+}
+
 body.pluie #meteo-pluie {
   display: block;
 }
@@ -49,10 +72,6 @@ body.neige #meteo-neige {
   display: block;
 }
 
-#meteo-bonhomme-neige {
-  left: 15px;
-  right: auto;
-}
 
 body.neige #meteo-bonhomme-neige {
   display: block;
@@ -66,3 +85,4 @@ body.neige #meteo-bonhomme-neige {
   width: 8%;
   height: 8%;
 }
+

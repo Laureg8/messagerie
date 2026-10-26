@@ -25,7 +25,7 @@ async function getData() {
 
     //récupération du code météo actuel (current vient de l'API Open meteo)
     const codeMeteo = resultat.current.weather_code;
-    const temps = getWeather(71);
+    const temps = getWeather(codeMeteo);
 
     console.log("Code météo :", codeMeteo);
     console.log("Temps actuel :", temps);
