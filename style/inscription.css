@@ -17,9 +17,11 @@ body {
 
 .titre img{
     position : absolute;
-    left: 220px;
-    top : -20px;
-    z-index : -999;
+    left: 88%;
+    top: -28%;
+    z-index: -999;
+    width: 35%;
+    height: auto;
 }
 
 /*formulaire */
@@ -77,6 +79,8 @@ form{
     color: #aaaaaa;
     background-image: url("../src/connect_img.png"); 
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 /*div inscription*/
@@ -93,8 +97,8 @@ form{
     position : absolute; 
     bottom : 0;
     right : 0;
-    width: 8em;
+    width: clamp(5rem, 8vw, 8rem);
+    height: auto;
 }
-
 
 
