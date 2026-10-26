@@ -9,7 +9,7 @@
 body.pluie {
   --bg-messagerie: #94ADC5;
   --btn-color: #94ADC5;
-  --text-color: #ffffff;
+  --text-color: #333333;
 }
 
 body.neige {
@@ -26,8 +26,10 @@ body.neige {
   position: relative;
 }
 
+/*gestion des icones de météo*/
+
+/*Soleil*/
 #meteo-soleil,
-#meteo-pluie,
 #meteo-neige{
   display: none;
   position: absolute;
@@ -64,10 +66,46 @@ body.soleil #meteo-nuage-soleil{
   height: 8%;
 }
 
+
+/*Pluie*/
 body.pluie #meteo-pluie {
   display: block;
 }
 
+body.pluie #meteo-nuage-pluie,
+body.pluie #meteo-nuage-pluie2{
+  display: block;
+}
+
+#meteo-nuage-pluie{
+  display: none;
+  position: absolute;
+  top: 0%;
+  right: 40%;
+  width: 5%;
+  height: 5%;
+}
+
+#meteo-nuage-pluie2{
+  display: none;
+  position: absolute;
+  top: 2%;
+  right: 34%;
+  width: 7%;
+  height: 7%;
+}
+
+#meteo-pluie{
+  display: none;
+  position: absolute;
+  top: 1%;
+  right: 0%;
+  width: 13%;
+  height: 13%;
+}
+
+
+/*Neige*/
 body.neige #meteo-neige {
   display: block;
 }
