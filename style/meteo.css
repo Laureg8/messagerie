@@ -124,3 +124,43 @@ body.neige #meteo-bonhomme-neige {
   height: 8%;
 }
 
+#meteo-spirale-sun,
+#meteo-spirale-pluie,
+#meteo-spirale-neige{
+  display: none;
+  position: absolute;
+  top: 30%;
+  right: 55%;
+  width: 20%;
+  height: 20%;
+  z-index: -1;
+}
+
+#meteo-spirale-sun2,
+#meteo-spirale-pluie2,
+#meteo-spirale-neige2{
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 25%;
+  width: 20%;
+  height: 20%;
+  z-index: -1;
+}
+
+
+
+body.soleil #meteo-spirale-sun,
+body.soleil #meteo-spirale-sun2{
+  display: block;
+}
+
+body.pluie #meteo-spirale-pluie,
+body.pluie #meteo-spirale-pluie2{
+  display: block;
+}
+
+body.neige #meteo-spirale-neige,
+body.neige #meteo-spirale-neige2{
+  display: block;
+}
