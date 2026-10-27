@@ -49,6 +49,13 @@ body{
   text-align: center;
 }
 
+.message-author {
+  font-size: 12px;
+}
+
+.message-author.envoye {
+  align-self: flex-end;
+}
 
 
 /*messages que l'on envoit*/
@@ -154,4 +161,10 @@ body{
   background-image: url('../src/arrow.svg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+
+#span-channel-title{
+  position: fixed;
+  top: 5%;
+  left: 40%;
 }

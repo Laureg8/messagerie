@@ -84,6 +84,7 @@ btnCreerCanal.addEventListener('click', async () => {
 const { data, error } = await supabaseClient.from('channel').select('*');
 const listeChannels = document.getElementById('liste-channels');
 let ul = document.getElementById("messages");
+const spanChannelTitle = document.getElementById("span-channel-title");
 
 data.forEach(channel => {
     const div = document.createElement("div");  
@@ -101,12 +102,14 @@ data.forEach(channel => {
     div.appendChild(button);
 
     div.addEventListener("click", async () => {
+        spanChannelTitle.textContent = channel?.name;
         ul.innerHTML = '';
         currentChannelId = channel?.id; //on donne le channel cliqué comme channel actuel
 
         if(!currentChannelId) return;
         // récupérer tous les messages du channel choisi
         const {data: messages, error: errorMessages} = await supabaseClient.from("messages").select("*").eq("channel_id", currentChannelId); //ajouter limite de messages récupérés
+
         messages.forEach(message => {
             const li = document.createElement("li");
             li.textContent = message?.message_content;
@@ -118,6 +121,8 @@ data.forEach(channel => {
             }
             ul.appendChild(li);
         });
+
+
 
     });
 
@@ -135,9 +140,24 @@ btnEnvoie.addEventListener('click', async () => {
 
     if (!valeur) return;
 
+    const { data: profile, error: profileError } = await supabaseClient
+        .from("profiles")
+        .select("username")
+        .eq("id", currentProfileId)
+        .single();
+
+    if (profileError) {
+        console.error("Erreur lors de la récupération du nom :", profileError.message);
+        return;
+    }
+
     const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.textContent = profile.username;
+    span.classList.add("message-author", "envoye");
     li.textContent = valeur;
     li.classList.add("message", "envoye");
+    ul.appendChild(span);
     ul.appendChild(li);
 
     input.value = '';
