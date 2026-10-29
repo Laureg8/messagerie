@@ -109,25 +109,33 @@ data.forEach(channel => {
         if(!currentChannelId) return;
         // récupérer tous les messages du channel choisi
         const {data: messages, error: errorMessages} = await supabaseClient.from("messages").select("*, profiles ( username )").eq("channel_id", currentChannelId); //ajouter limite de messages récupérés
-        
+
         messages.forEach(message => {
             const span = document.createElement("span");
             const li = document.createElement("li");
             li.textContent = message?.message_content;
-            span.textContent = message?.profiles;
-            
+            span.textContent = message?.profiles.username;
+
             if(message?.profile_id == currentProfileId) {
                 li.classList.add("message", "envoye");
+                span.classList.add("username", "envoye");
             }else {
                 li.classList.add("message", "recu");
+                span.classList.add("username", "recu");
             }
             ul.appendChild(span);
             ul.appendChild(li);
         });
 
+        const dernierMessage = ul.querySelector('li:last-child');
+
+        if (dernierMessage) {
+            dernierMessage.scrollIntoView({ behavior: 'auto', block: 'end' });
+        }
 
 
-    });
+
+    }); 
 
     listeChannels.append(div);
 });
