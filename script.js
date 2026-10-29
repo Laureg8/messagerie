@@ -108,17 +108,20 @@ data.forEach(channel => {
 
         if(!currentChannelId) return;
         // récupérer tous les messages du channel choisi
-        const {data: messages, error: errorMessages} = await supabaseClient.from("messages").select("*").eq("channel_id", currentChannelId); //ajouter limite de messages récupérés
-
+        const {data: messages, error: errorMessages} = await supabaseClient.from("messages").select("*, profiles ( username )").eq("channel_id", currentChannelId); //ajouter limite de messages récupérés
+        
         messages.forEach(message => {
+            const span = document.createElement("span");
             const li = document.createElement("li");
             li.textContent = message?.message_content;
+            span.textContent = message?.profiles;
             
             if(message?.profile_id == currentProfileId) {
                 li.classList.add("message", "envoye");
             }else {
                 li.classList.add("message", "recu");
             }
+            ul.appendChild(span);
             ul.appendChild(li);
         });
 
@@ -150,6 +153,7 @@ btnEnvoie.addEventListener('click', async () => {
         console.error("Erreur lors de la récupération du nom :", profileError.message);
         return;
     }
+    console.log(profile.username);
 
     const li = document.createElement("li");
     const span = document.createElement("span");
