@@ -80,7 +80,7 @@ btnCreerCanal.addEventListener('click', async () => {
 });
 
 
-
+// Fonction pour afficher la liste des canaux
 const { data, error } = await supabaseClient.from('channel').select('*');
 const listeChannels = document.getElementById('liste-channels');
 let ul = document.getElementById("messages");
@@ -145,7 +145,7 @@ const btnEnvoie = document.getElementById("envoie");
 const champSaisie = document.getElementById("saisie");
 
 
-
+//Fonction pour envoyer des messages et les ajouter à la bdd
 btnEnvoie.addEventListener('click', async () => {
     const valeur = input.value.trim();
 
@@ -166,7 +166,7 @@ btnEnvoie.addEventListener('click', async () => {
     const li = document.createElement("li");
     const span = document.createElement("span");
     span.textContent = profile.username;
-    span.classList.add("message-author", "envoye");
+    span.classList.add("username", "envoye");
     li.textContent = valeur;
     li.classList.add("message", "envoye");
     ul.appendChild(span);
