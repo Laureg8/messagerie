@@ -118,4 +118,75 @@ form{
     height: auto;
 }
 
+/*Responsive de signin.html*/
+
+@media (max-width: 700px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .form {
+        min-height: 100svh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #inscription-img {
+        display: none;
+    }
+
+    #inscription {
+        width: 100%;
+        min-height: 100svh;
+        justify-content: flex-start;
+        padding-top: 110px;
+        box-sizing: border-box;
+    }
+
+    .titre {
+        width: max-content;
+        max-width: 90%;
+        margin-bottom: 5px;
+    }
+
+    h1 {
+        margin: 0;
+        text-align: center;
+        font-size: clamp(28px, 8vw, 38px);
+        white-space: nowrap;
+    }
+
+    .titre img {
+        left: calc(100% - 12px);
+        top: -65%;
+        width: 90px;
+        height: auto;
+        z-index: -1;
+    }
+
+    form {
+        gap: 20px;
+        padding-bottom: 140px;
+    }
+
+    .element {
+        gap: 10px;
+    }
+
+    #connexion {
+        display: none;
+    }
+
+    input:focus {
+        outline: 2px solid rgba(163, 226, 236, 0.8);
+        outline-offset: 2px;
+    }
+
+    .footer {
+        width: clamp(6rem, 26vw, 8rem);
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+    }
+}
 
