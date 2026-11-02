@@ -33,13 +33,19 @@ h1{
 
 
 input{
+    box-sizing: border-box;
     height : 40px;
     width : 200px;
+    padding: 0 10px;
     border-radius : 16px;
     border: solid 2px transparent;
     background-image: linear-gradient(white, white), linear-gradient(153deg, rgba(255, 223, 154, 1) 0%, rgba(163, 226, 236, 1) 100%);
     background-origin: border-box;
     background-clip: padding-box, border-box;
+}
+
+input:focus {
+    outline: none;
 }
 
 label{
@@ -91,6 +97,17 @@ form{
     justify-content: center;
     align-items: center;
     position : relative;
+}
+
+#inscription #connexion p {
+    margin: 0;
+    font-family: "Cause", cursive;
+}
+
+#inscription #connexion a {
+    color: #0B4F91;
+    text-decoration: none;
+    font-family: "Cause", cursive;
 }
 
 .footer{

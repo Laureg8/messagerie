@@ -1,87 +1,107 @@
+/*style de la page de connexion*/
 html {
-    font-family: cause;
+    font-family: "Cause", cursive;
 }
 
 body {
     margin: 0;
-    width: 100vw;
+    min-height: 100vh;
 }
 
 main {
-    height: 580px;
+    min-height: 100vh;
     display: flex;
-    flex: 3;
 }
 
+/*Partie gauche de la page*/
 .left {
+    width: 40%;
     display: flex;
-    flex: 1;
 }
 
 .left img {
+    width: 100%;
     height: 100vh;
-    aspect-ratio: 4/5;
+    object-fit: cover;
 }
 
+/*Partie droite de la page*/
 .right {
-    flex: 2;
+    width: 60%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .right h1 {
-    font-family: borel;
-    font-weight: 100;
+    position: relative;
+    z-index: 1;
+    font-family: "Borel", cursive;
+    font-weight: 400;
+    font-style: normal;
     margin: 0;
 }
 
 .right img {
-    width: 80px;
-    position: fixed;
-    top: 40px;
-    right: 200px;
+    position: absolute;
+    left: 61%;
+    top: 13%;
+    z-index: 0;
+    width: 10%;
+    height: auto;
 }
 
-.right #courriel-message {
-    margin: 0;
-}
-
+/*Formulaire*/
 .right form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
 }
 
-.right div {
+.right div{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
+}
+
+.right label {
+    font-family: "Cause", cursive;
+    font-optical-sizing: auto;
 }
 
 .right input {
-    padding: 0 10px;
-    width: 200px;
+    box-sizing: border-box;
     height: 40px;
-    background-color: white;
-    border: 1px solid linear-gradient(#FFDF9A, #A3E2EC);
-    border-radius: 10px;
-}
-
-.right button {
-    margin: 20px 0 10px;
-    font-family: cause;
-    font-size: 16px;
-    font-weight: 600;
     width: 200px;
-    height: 45px;
-    background-color: white;
-    border: 1px solid #FEECB2;
-    border-radius: 10px;
-    box-shadow: 0 5px #FEECB2;
+    padding: 0 10px;
+    border-radius: 16px;
+    border: solid 2px transparent;
+    background-image: linear-gradient(white, white), linear-gradient(153deg, rgba(255, 223, 154, 1) 0%, rgba(163, 226, 236, 1) 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
 }
 
+.right input:focus {
+    outline: 2px solid rgba(163, 226, 236, 0.6);
+    outline-offset: 2px;
+}
+
+/*Bouton*/
+.right button {
+    text-decoration: none;
+    border: solid 1px #FFDF9A;
+    border-radius: 16px;
+    background-color: white;
+    height: 70px;
+    width: 180px;
+    box-shadow: 0 3px #FFDF9A;
+    cursor: pointer;
+}
+
+/*Redirection vers la page d'inscription*/
 .right .inscription {
     display: flex;
     flex-direction: column;
@@ -90,16 +110,41 @@ main {
 
 .right .inscription p {
     margin: 0;
+    font-family: "Cause", cursive;
 }
 
 .right .inscription a {
     color: #0B4F91;
     text-decoration: none;
+    font-family: "Cause", cursive;
 }
 
 footer img {
-    width: 100px;
-    position: fixed;
-    right: 0;
+    position: absolute;
     bottom: 0;
+    right: 0;
+    width: clamp(5rem, 8vw, 8rem);
+    height: auto;
+}
+
+@media (max-width: 700px) {
+    main {
+        position: relative;
+    }
+
+    .left {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        z-index: 0;
+    }
+
+    .left img {
+        opacity: 0.35;
+    }
+
+    .right {
+        width: 100%;
+        z-index: 1;
+    }
 }

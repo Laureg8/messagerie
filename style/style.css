@@ -50,7 +50,7 @@ body{
 }
 
 .username {
-  font-size: 12px;
+  font-size: 100%;
 }
 
 .username.envoye {
