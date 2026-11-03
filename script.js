@@ -80,10 +80,11 @@ btnCreerCanal.addEventListener('click', async () => {
 });
 
 
-
+// Fonction pour afficher la liste des canaux
 const { data, error } = await supabaseClient.from('channel').select('*');
 const listeChannels = document.getElementById('liste-channels');
 let ul = document.getElementById("messages");
+const spanChannelTitle = document.getElementById("span-channel-title");
 
 data.forEach(channel => {
     const div = document.createElement("div");  
@@ -101,25 +102,40 @@ data.forEach(channel => {
     div.appendChild(button);
 
     div.addEventListener("click", async () => {
+        spanChannelTitle.textContent = channel?.name;
         ul.innerHTML = '';
         currentChannelId = channel?.id; //on donne le channel cliqué comme channel actuel
 
         if(!currentChannelId) return;
         // récupérer tous les messages du channel choisi
-        const {data: messages, error: errorMessages} = await supabaseClient.from("messages").select("*").eq("channel_id", currentChannelId); //ajouter limite de messages récupérés
+        const {data: messages, error: errorMessages} = await supabaseClient.from("messages").select("*, profiles ( username )").eq("channel_id", currentChannelId); //ajouter limite de messages récupérés
+
         messages.forEach(message => {
+            const span = document.createElement("span");
             const li = document.createElement("li");
             li.textContent = message?.message_content;
-            
+            span.textContent = message?.profiles.username;
+
             if(message?.profile_id == currentProfileId) {
                 li.classList.add("message", "envoye");
+                span.classList.add("username", "envoye");
             }else {
                 li.classList.add("message", "recu");
+                span.classList.add("username", "recu");
             }
+            ul.appendChild(span);
             ul.appendChild(li);
         });
 
-    });
+        const dernierMessage = ul.querySelector('li:last-child');
+
+        if (dernierMessage) {
+            dernierMessage.scrollIntoView({ behavior: 'auto', block: 'end' });
+        }
+
+
+
+    }); 
 
     listeChannels.append(div);
 });
@@ -129,15 +145,31 @@ const btnEnvoie = document.getElementById("envoie");
 const champSaisie = document.getElementById("saisie");
 
 
-
+//Fonction pour envoyer des messages et les ajouter à la bdd
 btnEnvoie.addEventListener('click', async () => {
     const valeur = input.value.trim();
 
     if (!valeur) return;
 
+    const { data: profile, error: profileError } = await supabaseClient
+        .from("profiles")
+        .select("username")
+        .eq("id", currentProfileId)
+        .single();
+
+    if (profileError) {
+        console.error("Erreur lors de la récupération du nom :", profileError.message);
+        return;
+    }
+    console.log(profile.username);
+
     const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.textContent = profile.username;
+    span.classList.add("username", "envoye");
     li.textContent = valeur;
     li.classList.add("message", "envoye");
+    ul.appendChild(span);
     ul.appendChild(li);
 
     input.value = '';
