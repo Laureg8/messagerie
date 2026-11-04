@@ -40,6 +40,7 @@ const currentProfileId = await IsConnected();
 const btnCreerCanal = document.getElementById("btn-creer-canal");
 const champNomCanal = document.getElementById("nom-canal");
 
+
 btnCreerCanal.addEventListener('click', async () => {
     const nomCanal = champNomCanal.value.trim();
     if (!nomCanal) return;
@@ -85,6 +86,7 @@ const { data, error } = await supabaseClient.from('channel').select('*');
 const listeChannels = document.getElementById('liste-channels');
 let ul = document.getElementById("messages");
 const spanChannelTitle = document.getElementById("span-channel-title");
+let messagesSubscription = null;
 
 data.forEach(channel => {
     const div = document.createElement("div");  
@@ -107,6 +109,54 @@ data.forEach(channel => {
         currentChannelId = channel?.id; //on donne le channel cliqué comme channel actuel
 
         if(!currentChannelId) return;
+
+        if (messagesSubscription) {
+            await supabaseClient.removeChannel(messagesSubscription);
+        }
+
+        const channelSubscriptionId = currentChannelId;
+        messagesSubscription = supabaseClient
+            .channel(`messages-${channelSubscriptionId}`)
+            .on(
+                "postgres_changes",
+                {
+                    event: "INSERT",
+                    schema: "public",
+                    table: "messages",
+                    filter: `channel_id=eq.${channelSubscriptionId}`
+                },
+                async (payload) => {
+                    if (payload.new.channel_id !== currentChannelId) return;
+
+                    // Ne pas afficher deux fois les messages envoyés depuis cet onglet.
+                    if (payload.new.profile_id === currentProfileId) return;
+
+                    const { data: profile, error: profileError } = await supabaseClient
+                        .from("profiles")
+                        .select("username")
+                        .eq("id", payload.new.profile_id)
+                        .single();
+
+                    if (profileError) {
+                        console.error("Erreur lors de la récupération du profil :", profileError.message);
+                        return;
+                    }
+
+                    const span = document.createElement("span");
+                    span.textContent = profile.username;
+                    span.classList.add("username", "recu");
+
+                    const li = document.createElement("li");
+                    li.textContent = payload.new.message_content;
+                    li.classList.add("message", "recu");
+
+                    ul.appendChild(span);
+                    ul.appendChild(li);
+                    li.scrollIntoView({ behavior: "smooth", block: "end" });
+                }
+            )
+            .subscribe();
+
         // récupérer tous les messages du channel choisi
         const {data: messages, error: errorMessages} = await supabaseClient.from("messages").select("*, profiles ( username )").eq("channel_id", currentChannelId); //ajouter limite de messages récupérés
 
