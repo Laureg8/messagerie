@@ -236,9 +236,7 @@ btnEnvoie.addEventListener('click', async () => {
     if (error) {
         console.error("Erreur lors de l'envoi :", error);
         // Optionnel : alerter l'utilisateur ou retirer le 'li' si l'envoi a échoué
-    } else {
-        console.log("Message stocké avec succès !", data);
-    }
+    } 
 
     /*pour supprimer ce qui se trouve dans l'input après chaque envoie de message*/
     champSaisie.value ='';
