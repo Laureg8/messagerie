@@ -3,7 +3,7 @@
 const url = 'https://api.open-meteo.com/v1/forecast?latitude=48.4284&longitude=-71.0621&current=weather_code'
 
 
-const getWeather = (temp_code) => {
+var getWeather = (temp_code) => {
   if (temp_code === 0 ||temp_code === 1 ) return 'soleil' 
   if (temp_code >= 71 && temp_code <= 75) return 'neige'
   if (temp_code >= 61 && temp_code <= 67) return 'pluie'
