@@ -19,7 +19,7 @@ body{
   font-size: 21px;
 }
 
-/* */
+/* Changement de couleur du texte du placeholder */
 #nom-canal::placeholder {
   color: black;
 }
@@ -93,7 +93,7 @@ body{
   color: black;
 }
 
-/*style de la partie messagerie
+/* style de la partie messagerie */
 
 /* Conteneur de la liste de message*/
 #messages {
@@ -105,6 +105,48 @@ body{
   gap: 10px; 
   justify-content: center;
 
+}
+
+/* Flèche et liste rétractable sur ordinateur */
+
+#messagerie {
+  position: relative;
+  flex: 1; /* la discussion occupe la place libérée par la liste */
+}
+
+/* Flèche sur le bord gauche de la discussion, centrée verticalement */
+#btn-liste {
+  position: absolute;
+  left: 16px;
+  top: 30%;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url(../src/y-arrow.svg);
+  background-color: transparent;
+  background-position: center;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  transform: translateY(-50%) rotate(180deg); /* rotation de la flèche */
+  transition: transform 0.3s;
+}
+
+/* La flèche se retourne quand la liste est rangée */
+body.liste-cachee #btn-liste {
+  transform: translateY(-50%); /* rotation inverse de la flèche */
+}
+
+/* La liste glisse vers la gauche */
+#contacts {
+  min-width: 0; /* permet à la liste de rétrécir jusqu'à disparaître */
+  overflow: hidden; /* cache son contenu pendant qu'elle rétrécit */
+  white-space: nowrap; /* évite que les noms passent à la ligne pendant l'animation */
+  transition: width 0.3s;
+}
+
+body.liste-cachee #contacts {
+  width: 0;
 }
 
 /*le fond blanc des messages*/
@@ -262,4 +304,86 @@ body{
   left: 40%;
   font-family: "Cause", cursive;
   font-size: 170%;
+}
+
+/* -- Responsive -- */
+
+/* Pour les écrans de téléphone */
+
+@media (max-width: 768px) {
+
+  /* Un seul panneau à la fois */
+  #contacts {
+    width: 100%;
+  }
+
+  #messagerie {
+    display: none;
+  }
+
+  body.liste-cachee #contacts {
+    display: none;
+  }
+
+  body.liste-cachee #messagerie {
+    display: flex;
+  }
+
+  /* Flèche retour et nom du salon sur le fond météo */
+  #entete-salon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  #btn-liste,
+  body.liste-cachee #btn-liste {
+    position: static;
+    transform: rotate(180deg); /* la flèche toujours dans ce sens */
+  }
+
+  #span-channel-title {
+    top: 24px;
+    left: 72px;
+    font-size: 24px;
+  }
+
+  /* Discussion */
+  #bg-messages {
+    margin-top: 0;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+  }
+
+  #messages {
+    margin: 0 16px;
+  }
+
+  /* Liste des salons */
+  #nom-canal,
+  #liste-channels .channel-name {
+    padding-left: 20px;
+    font-size: 18px;
+  }
+
+  #contacts #btn-creer-canal,
+  #contacts #liste-channels button {
+    margin-right: 16px;
+  }
+
+  /* Champ de saisie en bas, sur toute la largeur */
+  #envoie input[type=text] {
+    width: auto;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding-right: 44px;
+  }
+
+  #envoie input[type=submit] {
+    top: auto;
+    right: 32px;
+    bottom: 30px;
+  }
 }
