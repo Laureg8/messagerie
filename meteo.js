@@ -5,14 +5,20 @@ const url = 'https://api.open-meteo.com/v1/forecast?latitude=48.4284&longitude=-
 
 var getWeather = (temp_code) => {
   if (temp_code === 0 ||temp_code === 1 ) return 'soleil' 
-  if (temp_code >= 71 && temp_code <= 75) return 'neige'
-  if (temp_code >= 61 && temp_code <= 67) return 'pluie'
+  if (temp_code >= 71 && temp_code <= 77) return 'neige'
+  if ((temp_code >= 51 && temp_code <= 67)|| 
+    (temp_code >= 80 && temp_code <= 82) || 
+    (temp_code >= 95 && temp_code <= 99) )
+    {
+     return 'pluie'
+    }
     
     return 'soleil' 
 }
 
 function appliquerTheme(theme){
   const body = document.body;
+  body.classList.remove('soleil', 'pluie', 'neige');
   body.classList.add(theme);
 }
 
