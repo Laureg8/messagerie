@@ -130,3 +130,26 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    /* Étoiles plus petites */
+    .stars img {
+        width: 24px;
+    }
+
+    /* Réajustement des positions */
+    .stars #star1 {
+        top: 150px;
+    }
+
+    .stars #star4 {
+        top: 140px;
+    }
+
+    .stars #star8 {
+        top: 16px;
+    }
+}
