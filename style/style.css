@@ -3,7 +3,110 @@ body{
   margin: 0;
 }
 
-/*style de la partie messagerie
+/* Style de la partie des salons */
+
+/* Contenant de la création du salon */
+#creation-canal {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #E3F3F7;
+}
+
+#nom-canal {
+  flex: 1;
+  border: none;
+  padding: 16px 0 16px 40px;
+  font-size: 21px;
+}
+
+/* Changement de couleur du texte du placeholder */
+#nom-canal::placeholder {
+  color: black;
+}
+
+/* Supression de la bordure de l'input au click */
+#nom-canal:focus {
+  outline: none;
+}
+
+/* Bouton de la création du salon */
+#contacts #btn-creer-canal {
+  width: 60%;
+  height: 60%;
+  margin-right: 24px;
+  border: none;
+  background-image: url(../src/ajout.svg);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Liste des salons */
+#contacts #liste-channels {
+  font-family: "cause";
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+/* Cache la scrollbar pour Chrome, Safari et Opera */
+#contacts #liste-channels::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cache la scrollbar pour IE, Edge et Firefox */
+#contacts #liste-channels {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Une ligne = un salon */
+#liste-channels .channel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #E3F3F7;
+  border-radius: 8px;
+}
+
+#liste-channels .channel-name {
+  list-style: none;
+  padding: 16px 0 16px 40px;
+  font-size: 21px;
+  letter-spacing: 2px;
+  color: #424242;
+}
+
+/* Boutons d'accès au salon */
+#contacts #liste-channels button {
+  width: 60%;
+  height: 60%;
+  margin-right: 24px;
+  border: none;
+  background-image: url(../src/y-arrow.svg);
+  background-color: transparent;
+  background-position: center;
+  background-size: 25%;
+  background-repeat: no-repeat;
+
+}
+
+/* Survol d'un salon */
+#liste-channels .channel:hover {
+  background-color: #F4FBFC;
+}
+
+/* Salon ouvert */
+#liste-channels .channel.actif {
+  background: linear-gradient(to right, #A3E2EC, #FFFFFF);
+}
+
+#liste-channels .channel.actif .channel-name {
+  color: black;
+}
+
+/* style de la partie messagerie */
 
 /* Conteneur de la liste de message*/
 #messages {
@@ -15,6 +118,48 @@ body{
   gap: 10px; 
   justify-content: center;
 
+}
+
+/* Flèche et liste rétractable sur ordinateur */
+
+#messagerie {
+  position: relative;
+  flex: 1; /* la discussion occupe la place libérée par la liste */
+}
+
+/* Flèche sur le bord gauche de la discussion, centrée verticalement */
+#btn-liste {
+  position: absolute;
+  left: -5%;
+  top: 20%;
+  z-index: 2;
+  width: 20%;
+  height: 20%;
+  border: none;
+  background-image: url(../src/y-arrow.svg);
+  background-color: transparent;
+  background-position: center;
+  background-size: 10%;
+  background-repeat: no-repeat;
+  transform: translateY(-50%) rotate(180deg); /* rotation de la flèche */
+  transition: transform 0.3s;
+}
+
+/* La flèche se retourne quand la liste est rangée */
+body.liste-cachee #btn-liste {
+  transform: translateY(-50%); /* rotation inverse de la flèche */
+}
+
+/* La liste glisse vers la gauche */
+#contacts {
+  min-width: 0; /* permet à la liste de rétrécir jusqu'à disparaître */
+  overflow: hidden; /* cache son contenu pendant qu'elle rétrécit */
+  white-space: nowrap; /* évite que les noms passent à la ligne pendant l'animation */
+  transition: width 0.3s;
+}
+
+body.liste-cachee #contacts {
+  width: 0;
 }
 
 /*le fond blanc des messages*/
@@ -119,12 +264,10 @@ body{
 
 .channel-button {
   flex-basis: 20%;
-  background-color: red;
   border: 0px;
 }
 
 #btn-creer-canal {
-  background-color: red;
   flex-basis: 20%;
   border: 0px;
 }
@@ -155,15 +298,17 @@ body{
 
 #envoie input[type=submit]{
   position: fixed;
-  right: 9%;
-  top: 92%;
-  width: 24px;
-  height: 24px;
+  right: 5%;
+  top: 89%;
+  width: 10%;
+  height: 10%;
   border: none;
   background-color: transparent;
-  background-image: url('../src/arrow.svg');
+  background-image: url(../src/arrow.svg);
+  background-position: center;
+  background-size: 15%;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+
 }
 
 #span-channel-title{
@@ -172,4 +317,86 @@ body{
   left: 40%;
   font-family: "Cause", cursive;
   font-size: 170%;
+}
+
+/* -- Responsive -- */
+
+/* Pour les écrans de téléphone */
+
+@media (max-width: 768px) {
+
+  /* Un seul panneau à la fois */
+  #contacts {
+    width: 100%;
+  }
+
+  #messagerie {
+    display: none;
+  }
+
+  body.liste-cachee #contacts {
+    display: none;
+  }
+
+  body.liste-cachee #messagerie {
+    display: flex;
+  }
+
+  /* Flèche retour et nom du salon sur le fond météo */
+  #entete-salon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  #btn-liste,
+  body.liste-cachee #btn-liste {
+    position: static;
+    transform: rotate(180deg); /* la flèche toujours dans ce sens */
+  }
+
+  #span-channel-title {
+    top: 24px;
+    left: 72px;
+    font-size: 24px;
+  }
+
+  /* Discussion */
+  #bg-messages {
+    margin-top: 0;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+  }
+
+  #messages {
+    margin: 0 16px;
+  }
+
+  /* Liste des salons */
+  #nom-canal,
+  #liste-channels .channel-name {
+    padding-left: 20px;
+    font-size: 18px;
+  }
+
+  #contacts #btn-creer-canal,
+  #contacts #liste-channels button {
+    margin-right: 16px;
+  }
+
+  /* Champ de saisie en bas, sur toute la largeur */
+  #envoie input[type=text] {
+    width: auto;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding-right: 44px;
+  }
+
+  #envoie input[type=submit] {
+    top: auto;
+    right: 32px;
+    bottom: 30px;
+  }
 }

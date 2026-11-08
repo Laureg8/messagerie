@@ -88,6 +88,22 @@ let ul = document.getElementById("messages");
 const spanChannelTitle = document.getElementById("span-channel-title");
 let messagesSubscription = null;
 
+// Flèche qui range ou affiche la liste des canaux
+const btnListe = document.getElementById("btn-liste");
+
+// Met à jour la description du bouton pour les lecteurs d'écran
+function majBoutonListe() {
+  const cachee = document.body.classList.contains("liste-cachee");
+  btnListe.setAttribute("aria-expanded", !cachee);
+  btnListe.setAttribute("aria-label", cachee ? "Afficher les salons" : "Masquer les salons");
+}
+
+// Un clic range ou ressort la liste sur ordinateur, sur mobile on retourne à la liste
+btnListe.addEventListener("click", () => {
+  document.body.classList.toggle("liste-cachee");
+  majBoutonListe();
+});
+
 data.forEach(channel => {
     const div = document.createElement("div");  
     div.classList.add("channel");
@@ -98,12 +114,21 @@ data.forEach(channel => {
     
     const button = document.createElement("button");
     button.classList.add("channel-button");
-    button.textContent = "cc";
 
     div.appendChild(li);
     div.appendChild(button);
 
     div.addEventListener("click", async () => {
+        // On retire le surlignage de tous les salons, puis on surligne celui cliqué
+        document.querySelectorAll(".channel").forEach(el => el.classList.remove("actif"));
+        div.classList.add("actif");
+        
+        // Ouvrir un salon affiche la discussion en plein écran sur mobile
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            document.body.classList.add("liste-cachee");
+            majBoutonListe();
+        }
+
         spanChannelTitle.textContent = channel?.name;
         ul.innerHTML = '';
         currentChannelId = channel?.id; //on donne le channel cliqué comme channel actuel
