@@ -98,12 +98,15 @@ data.forEach(channel => {
     
     const button = document.createElement("button");
     button.classList.add("channel-button");
-    button.textContent = "cc";
 
     div.appendChild(li);
     div.appendChild(button);
 
     div.addEventListener("click", async () => {
+        // On retire le surlignage de tous les salons, puis on surligne celui cliqué
+        document.querySelectorAll(".channel").forEach(el => el.classList.remove("actif"));
+        div.classList.add("actif");
+
         spanChannelTitle.textContent = channel?.name;
         ul.innerHTML = '';
         currentChannelId = channel?.id; //on donne le channel cliqué comme channel actuel

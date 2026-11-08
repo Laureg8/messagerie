@@ -3,6 +3,96 @@ body{
   margin: 0;
 }
 
+/* Style de la partie des salons */
+
+/* Contenant de la création du salon */
+#creation-canal {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #E3F3F7;
+}
+
+#nom-canal {
+  flex: 1;
+  border: none;
+  padding: 16px 0 16px 40px;
+  font-size: 21px;
+}
+
+/* */
+#nom-canal::placeholder {
+  color: black;
+}
+
+/* Supression de la bordure de l'input au click */
+#nom-canal:focus {
+  outline: none;
+}
+
+/* Bouton de la création du salon */
+#contacts #btn-creer-canal {
+  width: 40px;
+  height: 40px;
+  margin-right: 24px;
+  border: none;
+  background-image: url(../src/ajout.svg);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Liste des salons */
+#contacts #liste-channels {
+  font-family: "cause";
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Une ligne = un salon */
+#liste-channels .channel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #E3F3F7;
+  border-radius: 8px;
+}
+
+#liste-channels .channel-name {
+  list-style: none;
+  padding: 16px 0 16px 40px;
+  font-size: 21px;
+  letter-spacing: 2px;
+  color: #424242;
+}
+
+/* Boutons d'accès au salon */
+#contacts #liste-channels button {
+  width: 40px;
+  height: 40px;
+  margin-right: 24px;
+  border: none;
+  background-image: url(../src/y-arrow.svg);
+  background-color: transparent;
+  background-position: center;
+  background-size: 20px;
+  background-repeat: no-repeat;
+}
+
+/* Survol d'un salon */
+#liste-channels .channel:hover {
+  background-color: #F4FBFC;
+}
+
+/* Salon ouvert */
+#liste-channels .channel.actif {
+  background: linear-gradient(to right, #A3E2EC, #FFFFFF);
+}
+
+#liste-channels .channel.actif .channel-name {
+  color: black;
+}
+
 /*style de la partie messagerie
 
 /* Conteneur de la liste de message*/
