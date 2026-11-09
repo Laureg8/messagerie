@@ -5,10 +5,12 @@ const url = 'https://api.open-meteo.com/v1/forecast?latitude=48.4284&longitude=-
 
 var getWeather = (temp_code) => {
   if (temp_code === 0 ||temp_code === 1 ) return 'soleil' 
-  if (temp_code >= 71 && temp_code <= 77) return 'neige'
+  if (temp_code === 2 || temp_code === 3) return 'pluie'
+  if ((temp_code >= 71 && temp_code <= 77) || temp_code === 85 || temp_code === 86) return 'neige'
   if ((temp_code >= 51 && temp_code <= 67)|| 
     (temp_code >= 80 && temp_code <= 82) || 
-    (temp_code >= 95 && temp_code <= 99) )
+    (temp_code >= 95 && temp_code <= 99) ||
+    temp_code === 45 || temp_code === 48)
     {
      return 'pluie'
     }
@@ -43,4 +45,3 @@ async function getData() {
 }
 
 getData();
-
