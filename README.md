@@ -23,7 +23,7 @@ Pour assurer la connexion et l'envoi de messages, l'application utilise Supabase
 ---
 
 # Structure du projet
-
+```
 ├── src/                    # Dossier des ressources (images, icônes)
 ├── style/                  # Dossier des feuilles de style CSS
 │   ├── index.css
@@ -39,6 +39,8 @@ Pour assurer la connexion et l'envoi de messages, l'application utilise Supabase
 ├── script.js               # Logique principale de l'application
 ├── signin.html             # Page d'inscription
 └── supabase-client.js      # Configuration et client Supabase
+```
+---
 
 - **Lien** : https://laureg8.github.io/messagerie/
 - **Lien Figma** : https://www.figma.com/design/6wzMWODztMGEJZmjkXnkry/Messagerie?node-id=0-1&t=v913UcNv7kf3tMz0-1
