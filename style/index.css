@@ -138,22 +138,54 @@ body{
 /* Responsive */
 
 @media (max-width: 768px) {
+    body {
+        min-height: 100vh;
+        background-position: center;
+    }
 
     /* Étoiles plus petites */
     .stars img {
-        width: 24px;
+        width: 5%;
     }
 
     /* Réajustement des positions */
     .stars #star1 {
-        top: 150px;
+        top: 9em;
     }
 
     .stars #star4 {
-        top: 140px;
+        top: 10em;
     }
 
     .stars #star8 {
-        top: 16px;
+        top: 2em;
+    }
+
+    #pres-section {
+        height: 100vh;
+        padding: 0 16px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #pres-section h1{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        font-family: "Borel", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    #btn {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    #pres-section a {
+        width: min(220px, 70vw);
     }
 }
