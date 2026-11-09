@@ -267,3 +267,20 @@ btnEnvoie.addEventListener('click', async () => {
     champSaisie.value ='';
 
 }) 
+
+//fonction de déconnexion
+const btnDeconnexion = document.getElementById("btn-deconnexion");
+
+async function deconnexion() {
+    const { error } = await supabaseClient.auth.signOut();
+
+    if (error) {
+        console.error("Erreur lors de la déconnexion :", error.message);
+        alert("Impossible de vous déconnecter. Veuillez réessayer.");
+        return;
+    }
+
+    window.location.replace("index.html");
+}
+
+btnDeconnexion?.addEventListener("click", deconnexion);

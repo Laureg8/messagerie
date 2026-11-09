@@ -13,10 +13,9 @@ body{
 }
 
 #nom-canal {
-  flex: 1;
   border: none;
-  padding: 16px 0 16px 40px;
-  font-size: 21px;
+  padding: 5% 10% 4% 21%;
+  font-size: 117%;
 }
 
 /* Changement de couleur du texte du placeholder */
@@ -33,7 +32,7 @@ body{
 #contacts #btn-creer-canal {
   width: 60%;
   height: 60%;
-  margin-right: 24px;
+  margin-right: 8%;
   border: none;
   background-image: url(../src/ajout.svg);
   background-color: transparent;
@@ -48,6 +47,20 @@ body{
   margin: 0;
   padding: 0;
   overflow-y: auto;
+}
+
+#contacts #btn-deconnexion {
+  position: fixed;
+  left: -4%;
+  top: -2%;
+  width: 15%;
+  height: 15%;
+  border: none;
+  background-color: transparent;
+  background-image: url(../src/deconnect.svg);
+  background-position: center;
+  background-size: 15%;
+  background-repeat: no-repeat;
 }
 
 /* Cache la scrollbar pour Chrome, Safari et Opera */
@@ -380,16 +393,29 @@ body.liste-cachee #contacts {
   }
 
   /* Liste des salons */
-  #nom-canal,
   #liste-channels .channel-name {
     padding-left: 20px;
     font-size: 18px;
+  }
+
+  #nom-canal{
+    padding-left: 20%;
+    font-size:120%
   }
 
   #contacts #btn-creer-canal,
   #contacts #liste-channels button {
     margin-right: 16px;
   }
+
+  #contacts #btn-deconnexion {
+  left: -19%;      
+  top: -25%;
+  width: 60%;
+  height: 60%;
+}
+
+  
 
   /* Champ de saisie en bas, sur toute la largeur */
   #envoie input[type=text] {
