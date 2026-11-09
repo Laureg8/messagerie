@@ -8,11 +8,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Borel&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Borel&family=Cause:wght@100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Borel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cause:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
@@ -26,8 +23,10 @@
         <div class="right">
             <form id="form-login" method="POST">
 
-                <h1>Connectez-vous</h1>
-                <img src="src/star.png" alt="Etoile d'illustration">
+                <div class="titre">
+                    <h1>Connectez-vous</h1>
+                    <img src="src/star.png" alt="Etoile d'illustration">
+                </div>
 
 
                 <div class="element">
@@ -37,7 +36,7 @@
 
                 <div>
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" name="mdp" id="mdp">
+                    <input type="password" name="mdp" id="mdp" placeholder="Mdp">
                 </div>
 
                 <button id="btn">Connexion</button>

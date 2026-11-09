@@ -19,6 +19,7 @@ main {
     display: flex;
 }
 
+/* L'image remplit toute la colonne */
 .left img {
     width: 100%;
     height: 100vh;
@@ -44,13 +45,20 @@ main {
     margin: 0;
 }
 
-.right img {
+/* Le titre sert de repère pour placer l'étoile */
+.right .titre {
+    position: relative;
+}
+
+/* Étoile accrochée en haut à droite du titre derrière le texte */
+.right .titre img {
     position: absolute;
-    left: 61%;
-    top: 13%;
+    left: 90%;
+    top: -70%;
     z-index: 0;
-    width: 10%;
+    width: 35%;
     height: auto;
+
 }
 
 /*Formulaire*/
@@ -91,14 +99,13 @@ main {
 
 /*Bouton*/
 .right button {
-    text-decoration: none;
-    border: solid 1px #FFDF9A;
-    border-radius: 16px;
-    background-color: white;
-    height: 70px;
-    width: 180px;
+    text-decoration : none;
+    border : solid 1px #FFDF9A;
+    border-radius : 16px;
+    background-color : white;
+    height : 70px;
+    width :180px;
     box-shadow: 0 3px #FFDF9A;
-    cursor: pointer;
 }
 
 /*Redirection vers la page d'inscription*/
@@ -131,9 +138,7 @@ footer img {
 /*Responsive de login.html*/
 
 @media (max-width: 700px) {
-    body {
-        overflow-x: hidden;
-    }
+
 
     main {
         min-height: 100svh;
@@ -158,7 +163,7 @@ footer img {
         gap: 20px;
         box-sizing: border-box;
         padding-bottom: 140px;
-        overflow: hidden;
+
     }
 
     .right h1 {
@@ -170,32 +175,32 @@ footer img {
         white-space: nowrap;
     }
 
-    .right img {
-        left: auto;
-        right: 5%;
+    .right input {
+        width: min(300px, 85vw);
+        height: 48px;
+        font-size: 16px;
+    }
+
+     .right .titre img {
+        right: -35px;
         top: -30px;
-        width: 90px;
-        height: auto;
-        z-index: -1;
+        width: 60px;
     }
 
     .right div {
         gap: 10px;
     }
 
-    .right .inscription {
-        display: none;
-    }
+
 
     .right input:focus {
         outline: 2px solid rgba(163, 226, 236, 0.8);
         outline-offset: 2px;
     }
 
-    footer img {
+    footer img{
         width: clamp(6rem, 26vw, 8rem);
-        right: 0;
-        bottom: 0;
+        
         pointer-events: none;
     }
 }
