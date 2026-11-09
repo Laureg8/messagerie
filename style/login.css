@@ -99,15 +99,13 @@ main {
 
 /*Bouton*/
 .right button {
-    text-decoration: none;
-    border: solid 1px #FFDF9A;
-    border-radius: 16px;
-    background-color: white;
-    height: 40px;
-    width: 160px;
-    margin: 10px 0;
+    text-decoration : none;
+    border : solid 1px #FFDF9A;
+    border-radius : 16px;
+    background-color : white;
+    height : 70px;
+    width :180px;
     box-shadow: 0 3px #FFDF9A;
-    cursor: pointer;
 }
 
 /*Redirection vers la page d'inscription*/

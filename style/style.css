@@ -346,17 +346,24 @@ body.liste-cachee #contacts {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 16px;
+    padding: 2% 3% 0%;
   }
 
   #btn-liste,
   body.liste-cachee #btn-liste {
+    display: block;
     position: static;
+    flex: 0 0 12%;
+    width: 12%;
+    height: auto;
+    aspect-ratio: 1;
+    background-position: center;
+    background-size: 50%;
     transform: rotate(180deg); /* la flèche toujours dans ce sens */
   }
 
   #span-channel-title {
-    top: 3%;
+    top: 6%;
     left: 5%;
     font-size: 24px;
   }
